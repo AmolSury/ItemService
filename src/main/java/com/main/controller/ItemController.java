@@ -45,7 +45,7 @@ public class ItemController {
 
 		Optional<Product> customer = getItemServicesImpl().getById(id);
 		if (!customer.isPresent()) {
-			throw new ItemNotFoundException("Not found customer with Id is : " + id);
+			throw new ItemNotFoundException("Not found product with Id is : " + id);
 		}
 		return new ResponseEntity<Product>(customer.get(), HttpStatus.OK);
 	}
@@ -54,7 +54,7 @@ public class ItemController {
 	public ResponseEntity<String> updateProduct(@RequestBody Product currentProduct) {
 		String status = getItemServicesImpl().updateCustomer(currentProduct);
 		if (status == "NotFound") {
-			throw new ItemNotFoundException("Not found customer with Id is" + currentProduct.getId());
+			throw new ItemNotFoundException("Not found prduct with Id is" + currentProduct.getId());
 		}
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
@@ -64,7 +64,7 @@ public class ItemController {
 
 		String status = getItemServicesImpl().deleteCustomer(id);
 		if (status == "NotFound") {
-			throw new ItemNotFoundException("Not found customer with Id is" + id);
+			throw new ItemNotFoundException("Not found product with Id is : " + id);
 		}
 		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
 	}
