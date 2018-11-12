@@ -27,6 +27,10 @@ public class ItemServicesImpl  implements ItemServices{
 	public Optional<Product> getById(Long id) {
 		return getProductRepository().findById(id);
 	}
+	
+	public Optional<Product> getById(String name) {
+		return getProductRepository().findById(name);
+	}
 
 	public String updateCustomer(Product product) {
 		if (getProductRepository().existsById(product.getId())) {

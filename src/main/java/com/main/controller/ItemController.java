@@ -3,6 +3,7 @@ package com.main.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.criteria.Predicate.BooleanOperator;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,16 @@ public class ItemController {
 			throw new ItemNotFoundException("Not found product with Id is : " + id);
 		}
 		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+	}
+	
+	@GetMapping(value = "/get/{name}")
+	public ResponseEntity<Boolean> getProductById(@PathVariable("id") String name) {
+
+		Optional<Product> customer = getItemServicesImpl().getById(id);
+		if (!customer.isPresent()) {
+			throw new ItemNotFoundException("Not found product with name is : " + name);
+		}
+		return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 	}
 	
 

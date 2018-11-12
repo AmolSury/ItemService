@@ -7,5 +7,7 @@ import com.main.entity.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>{
+	
+	//public List<Person> findByLastName(String lastName);
 
 }
