@@ -3,6 +3,8 @@ package com.main.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +30,7 @@ public class ItemController {
 	private ItemServicesImpl itemServicesImpl;
 	
 	@PostMapping(value = "/create")
-	public ResponseEntity<String> createProduct(@RequestBody Product product) {
+	public ResponseEntity<String> createProduct(@RequestBody @Valid Product product) {
 		String status = getItemServicesImpl().createProducts(product);
 		return new ResponseEntity<String>(status ,HttpStatus.CREATED);
 		

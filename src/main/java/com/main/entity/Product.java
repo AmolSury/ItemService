@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="product")
@@ -26,9 +27,11 @@ public class Product implements Serializable {
 	@Column(name="prod_Id")
 	private Long id;
 	
+	@NotBlank
 	@Column(name="name")
 	private String name;
 	
+	@NotBlank
 	@Column(name="price")
 	private Double price;
 	
