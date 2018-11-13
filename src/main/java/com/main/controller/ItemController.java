@@ -3,7 +3,6 @@ package com.main.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.criteria.Predicate.BooleanOperator;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -72,10 +72,10 @@ public class ItemController {
 		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
 	}
 	
-	@GetMapping(value = "/get/{name}")
-	public ResponseEntity<Boolean> getProductById(@PathVariable("id") String name) {
+	@GetMapping(value = "/get")
+	public ResponseEntity<Boolean> getProductById(@RequestParam String name) {
 
-		Optional<Product> customer = getItemServicesImpl().getById(id);
+		Optional<List<Product>> customer = getItemServicesImpl().getByName(name);
 		if (!customer.isPresent()) {
 			throw new ItemNotFoundException("Not found product with name is : " + name);
 		}

@@ -15,4 +15,5 @@ public interface ItemServices {
 	
 	public String updateCustomer(Product product);
 
+	public Optional<List<Product>> getByName(String name);
 }

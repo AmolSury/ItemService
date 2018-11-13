@@ -14,22 +14,26 @@ public class ItemServicesImpl  implements ItemServices{
 	
 	private ProductRepository productRepository;
 	
+	@Override
 	public String createProducts(Product product) {
 		//TODO cust
 		Product prod = getProductRepository().save(product);
 		return "ProductCreated";
 	}
 	
+	@Override
 	public List<Product> getCustomers() {
 		return (List<Product>) getProductRepository().findAll();
 	}
 
+	@Override
 	public Optional<Product> getById(Long id) {
 		return getProductRepository().findById(id);
 	}
 	
-	public Optional<Product> getById(String name) {
-		return getProductRepository().findById(name);
+	@Override
+	public Optional<List<Product>> getByName(String name) {
+		return getProductRepository().findByName(name);
 	}
 
 	public String updateCustomer(Product product) {
