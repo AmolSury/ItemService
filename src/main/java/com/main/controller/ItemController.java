@@ -77,7 +77,7 @@ public class ItemController {
 
 		Optional<List<Product>> customer = getItemServicesImpl().getByName(name);
 		if (!customer.isPresent()) {
-			throw new ItemNotFoundException("Not found product with name is : " + name);
+			return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
 		}
 		return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 	}
