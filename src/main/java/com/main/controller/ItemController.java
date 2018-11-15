@@ -73,8 +73,8 @@ public class ItemController {
 	}
 	
 	@GetMapping(value = "/get")
-	public ResponseEntity<Boolean> getProductById(@RequestParam String name) {
-
+	public ResponseEntity<Boolean> getProductName(@RequestParam("name") String name) {
+		System.out.println("-===========-=-=-=-"+name);	
 		Optional<List<Product>> customer = getItemServicesImpl().getByName(name);
 		if (!customer.isPresent()) {
 			return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
