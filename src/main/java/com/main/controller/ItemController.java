@@ -25,7 +25,6 @@ import com.main.services.ItemServicesImpl;
 import com.main.util.ItemNotFoundException;
 
 @RestController
-@RequestMapping("/item-services")
 public class ItemController {
 	
 	private ItemServicesImpl itemServicesImpl;
